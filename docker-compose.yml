@@ -4,6 +4,7 @@ services:
   db_bet:
     image: postgres:latest
     container_name: db_bet
+    network_mode: bet_service_default
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -15,6 +16,7 @@ services:
   db_event:
     image: postgres:latest
     container_name: db_event
+    network_mode: bet_service_default
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -27,6 +29,7 @@ services:
     build: .
     image: entry
     container_name: api_bet
+    network_mode: bet_service_default
     command: bash -c "uvicorn --app-dir bet_maker bet_app:app --host 0.0.0.0 --port 8085 --reload"
     ports:
       - "8085:8085"
@@ -40,6 +43,7 @@ services:
   api_event:
     image: entry
     container_name: api_event
+    network_mode: bet_service_default
     command: bash -c "uvicorn --app-dir line_provider event_app:app --host 0.0.0.0 --port 8086 --reload"
     ports:
       - "8086:8086"
