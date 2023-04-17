@@ -26,7 +26,7 @@ services:
   api_bet:
     build: .
     image: entry
-    container_name: api
+    container_name: api_bet
     command: bash -c "uvicorn --app-dir bet_maker bet_app:app --host 0.0.0.0 --port 8085 --reload"
     ports:
       - "8085:8085"
@@ -38,9 +38,8 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=mypassword
   api_event:
-    build: .
     image: entry
-    container_name: api
+    container_name: api_event
     command: bash -c "uvicorn --app-dir line_provider event_app:app --host 0.0.0.0 --port 8086 --reload"
     ports:
       - "8086:8086"
