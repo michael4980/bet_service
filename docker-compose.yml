@@ -22,9 +22,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mypassword
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data_event
     ports:
-      - '5433:5433'
+      - '5433:5432'
   api_bet:
     build: .
     image: entry
